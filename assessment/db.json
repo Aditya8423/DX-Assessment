@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Aditya Gupta",
+      "gender": "Male",
+      "phone": "9876543210"
+    },
+    {
+      "id": "2",
+      "name": "Sakshi Gupta",
+      "gender": "Female",
+      "phone": "9123456789"
+    },
+    {
+      "id": "d7e5",
+      "name": "Pankaj Kanali",
+      "gender": "Male",
+      "phone": "8273645198"
+    },
+    {
+      "id": "1a34",
+      "name": "Rajeev Rai",
+      "gender": "Male",
+      "phone": "76438736487"
+    },
+    {
+      "id": "5c9c",
+      "name": "Raksha",
+      "gender": "Female",
+      "phone": "3787983174"
+    },
+    {
+      "id": "75fd",
+      "name": "prajwal",
+      "gender": "m",
+      "phone": "7683483"
+    }
+  ]
+}

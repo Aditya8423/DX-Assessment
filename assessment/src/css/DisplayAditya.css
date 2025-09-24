@@ -1,0 +1,43 @@
+/* src/DisplayAditya.css */
+
+/* Table styling */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.users-table th,
+.users-table td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.users-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.users-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.users-table tr:hover {
+  background-color: #e0e0e0;
+  transition: 0.3s;
+}
+
+/* Back link styling */
+.back-link {
+  text-decoration: none;
+  color: #123456;
+  font-weight: bold;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.back-link:hover {
+  color: #000000;
+}
