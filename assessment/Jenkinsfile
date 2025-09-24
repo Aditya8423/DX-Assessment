@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    environment {
+        // SonarQube installation name configured in Jenkins
+        SONARQUBE = "MySonarQube" 
+        // NodeJS installation name configured in Jenkins
+        NODEJS_HOME = tool name: 'NodeJS', type: 'NodeJS'
+        PATH = "${env.NODEJS_HOME}\\bin;${env.PATH}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'dev', url: 'https://github.com/Aditya8423/DX-Assessment.git', credentialsId: 'Aditya8423'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm install'
+            }
+        }
+
+        stage('Run Tests with Coverage') {
+            steps {
+                bat 'npm run coverage'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv(SONARQUBE) {
+                    bat 'sonar-scanner -Dsonar.projectKey=dx-test -Dsonar.projectName=DX-Assessment -Dsonar.sources=src -Dsonar.javascript.lcov.reportPaths=coverage\\lcov.info'
+                }
+            }
+        }
+
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 1, unit: 'HOURS') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'coverage\\lcov-report\\**', allowEmptyArchive: true
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+    }
+}
