@@ -7,13 +7,13 @@ import AddUserAditya from "./components/AddUsersAditya";
 
 function App() {
   return (
-    <Router>
+
       <Routes>
         <Route path="/" element={<UsersAditya />} />
         <Route path="/display" element={<DisplayAditya />} />
         <Route path="/add" element={<AddUserAditya />} />
       </Routes>
-    </Router>
+
   );
 }
 
